@@ -20,4 +20,13 @@ class stadiums(models.Model):
     picture = models.TextField()
     map = models.CharField(max_length=300)
 
+class user(models.Model):
+    username=models.CharField(max_length=15)
+    email = models.EmailField()
+    password = models.CharField(max_length=30)
+    gender = models.CharField(max_length=1)
+    phone = models.CharField(max_length=20)
+    country = models.CharField(max_length=30)
+
+
 

@@ -9,6 +9,16 @@ class stadiumsseria(serializers.ModelSerializer):
         fields = ('id','name','capacity','city','country','desc','cost','picture')
 
 
+class userseria(serializers.ModelSerializer):
+    class Meta:
+        model = user
+        fields = ('id','username','email','password','gender','phone','country')
+
+
+    
+
+
+
 
 
 

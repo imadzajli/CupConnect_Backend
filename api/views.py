@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from rest_framework.views import APIView
+from rest_framework import generics,status
+from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .serializer import *
 import base64
@@ -69,3 +71,32 @@ class stadiums_view(APIView):
     def get(self,request):
         out = [{"id":o.id,"name":o.name,"capacity":o.capacity,"city":o.city,"country":o.country,"desc":o.desc,"cost":o.cost,"picture":json.loads(o.picture),"map":o.map} for o in stadiums.objects.all() ]
         return Response(out)
+
+
+class user_view(APIView):
+    serializer_class = userseria
+    def get(self,request):
+        out = [{"id":o.id,"username":o.username,"email":o.email,"password":o.password,"gender":o.gender,"phone":o.phone,"country":o.country} for o in user.objects.all()]
+        return Response(out)
+
+
+@api_view(['POST',])
+
+def create_user(request):
+    if request.method=="POST":
+        serializer = userseria(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data,status=status.HTTP_201_CREATED)
+        return Response("failed",status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['GET',])
+
+def get_user(request,email):
+    if request.method == "GET":
+        userthis = user.objects.all().filter(email=email)
+        if userthis=={}:
+            return Response("user not found",status=status.HTTP_404_NOT_FOUND)
+        #serializer = userseria
+        d = {"id":userthis["id"],"username":userthis["username"],"email":userthis["email"],"password":userthis["password"],"gender":userthis["gender"],"phone":userthis["phone"],"country":userthis["country"]}
+        return Response("this is the user : ",d)
