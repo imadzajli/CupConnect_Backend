@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,HttpResponse
 from rest_framework.views import APIView
 from rest_framework import generics, status
 from rest_framework.decorators import api_view
@@ -64,7 +64,7 @@ def base64_to_image(b64):
 
 
 def home(request):
-    add_stadium()
+    #add_stadium()
     return render(request, "home.html")
 
 
@@ -145,3 +145,23 @@ def get_user(request, email):
         except:
             return Response("user not exist", status=status.HTTP_404_NOT_FOUND)
         # serializer = userseria
+
+
+
+def update_user(request,attribute,id,new_value):
+    
+    
+    if request.method == "PUT":
+        userinfo = user.objects.all().filter(id=id)[0] 
+        
+        if attribute == "username":
+            userinfo.username=new_value
+            
+        if attribute == "phone":
+            userinfo.phone = new_value
+        if attribute == "password":
+            userinfo.password = new_value
+        userinfo.save()
+
+        return HttpResponse("api/user/")
+        
