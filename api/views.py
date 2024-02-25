@@ -111,6 +111,24 @@ class user_view(APIView):
         ]
         return Response(out)
 
+class hotel_view(APIView):
+    serializer_class = hotelseria
+
+    @method_decorator(cache_page(CACHE_TTL))
+    def get(self, request):
+        out = [
+            {
+                "id": o.id,
+                "name": o.name,
+                "description": o.description,
+                "min_price": o.min_price,
+                "max_price": o.max_price,
+                "stad": o.stad,
+            }
+            for o in Hotel.objects.all()
+        ]
+        return Response(out)
+
 
 @api_view(
     [
