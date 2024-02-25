@@ -8,7 +8,8 @@ import base64
 from io import BytesIO
 from PIL import Image, ImageOps
 import json
-
+from django.utils.decorators import method_decorator
+from django.views.decorators.cache import cache_page
 
 s1 = {"name":"Stade Ibn Batouta","capacity":65000,"city":"tangier","country":"morocco","desc":"The newly built stadium in south-western outskirts of Tangier (by the N1 national road) isn't only the city's largest sports facility, but the largest building overall. Construction was marred with delays and lasted almost 9 years in the end. Began in 2002, it wasn't delivered until 2011. And it may still seem look unfinished to some, not without purpose. Both end zones were left single-tiered, but with the footing for an upper tier to be added in the future. Similarly, the east stand already has support structures for its future roof, should funds be allocated to build one.","cost":844,"picture":{},"map":"https://maps.app.goo.gl/aTUaf4hKfcCLAgAF9"}
 s1_path=["C:/Users/pp/Desktop/devjam/api/images/tangier/main.jpg","C:/Users/pp/Desktop/devjam/api/images/tangier/s1.jpg","C:/Users/pp/Desktop/devjam/api/images/tangier/s2.jpg","C:/Users/pp/Desktop/devjam/api/images/tangier/s3.jpg","C:/Users/pp/Desktop/devjam/api/images/tangier/s4.jpg"]
@@ -28,7 +29,7 @@ s5_path=["C:/Users/pp/Desktop/devjam/api/images/agadir/main.jpg","C:/Users/pp/De
 s6 = {"name":"Complexe Sportif de Fès","capacity":45000,"city":"Fes","country":"morocco","desc":"According to initial plans, works on the new central stadium for Fez were to start in early 1990s, but groundbreaking was delayed for almost 2 years, starting eventually in 1994. As if this wasn't enough, the delays were growing further as time went by, resulting by the stadium not being ready for the 1997 Cup of Nations, as was planned. It wasn't until 2003 that the construction ended, being expanded in the process by 5,000 additional seats compared to the 1992 design. Still, even after delivery it waited four years to be opened. The free-for-all exhibition game between FAR Rabat and Rachad Bernoussi was played in front of full stands in November 2007.","cost":0,"picture":{},"map":"https://maps.app.goo.gl/SdNbXR3QpWqsjNtd7"}
 s6_path=["C:/Users/pp/Desktop/devjam/api/images/fes/main.jpg","C:/Users/pp/Desktop/devjam/api/images/fes/s1.jpg","C:/Users/pp/Desktop/devjam/api/images/fes/s2.avif","C:/Users/pp/Desktop/devjam/api/images/fes/s3.jpg","C:/Users/pp/Desktop/devjam/api/images/fes/s4.jpg"]
 
-
+CACHE_TTL = 60 * 15
 
 
 
@@ -71,6 +72,7 @@ def home(request):
 class stadiums_view(APIView):
     serializer_class = stadiumsseria
 
+    @method_decorator(cache_page(CACHE_TTL))
     def get(self, request):
         out = [
             {
@@ -92,6 +94,7 @@ class stadiums_view(APIView):
 class user_view(APIView):
     serializer_class = userseria
 
+    @method_decorator(cache_page(CACHE_TTL))
     def get(self, request):
         out = [
             {
