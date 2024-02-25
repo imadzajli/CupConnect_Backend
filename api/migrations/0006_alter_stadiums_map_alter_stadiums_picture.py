@@ -4,20 +4,19 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('api', '0005_stadiums_map_alter_stadiums_picture'),
+        ("api", "0005_stadiums_map_alter_stadiums_picture"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='stadiums',
-            name='map',
+            model_name="stadiums",
+            name="map",
             field=models.CharField(max_length=300),
         ),
         migrations.AlterField(
-            model_name='stadiums',
-            name='picture',
+            model_name="stadiums",
+            name="picture",
             field=models.TextField(),
         ),
     ]

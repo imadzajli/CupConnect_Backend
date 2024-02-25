@@ -1,15 +1,15 @@
 from django.shortcuts import render
 from rest_framework.views import APIView
-from rest_framework import generics,status
+from rest_framework import generics, status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .serializer import *
 import base64
 from io import BytesIO
-from PIL import Image,ImageOps
+from PIL import Image, ImageOps
 import json
 
-'''
+"""
 s1 = {"name":"Stade Ibn Batouta","capacity":65000,"city":"tangier","country":"morocco","desc":"The newly built stadium in south-western outskirts of Tangier (by the N1 national road) isn't only the city's largest sports facility, but the largest building overall. Construction was marred with delays and lasted almost 9 years in the end. Began in 2002, it wasn't delivered until 2011. And it may still seem look unfinished to some, not without purpose. Both end zones were left single-tiered, but with the footing for an upper tier to be added in the future. Similarly, the east stand already has support structures for its future roof, should funds be allocated to build one.","cost":844,"picture":{},"map":"https://maps.app.goo.gl/aTUaf4hKfcCLAgAF9"}
 s1_path=["C:/Users/pp/Desktop/devjam/api/images/tangier/main.jpg","C:/Users/pp/Desktop/devjam/api/images/tangier/s1.jpg","C:/Users/pp/Desktop/devjam/api/images/tangier/s2.jpg","C:/Users/pp/Desktop/devjam/api/images/tangier/s3.jpg","C:/Users/pp/Desktop/devjam/api/images/tangier/s4.jpg"]
 
@@ -46,11 +46,14 @@ def add_stadium():
         t = stadiums(name=j[0]["name"],capacity = j[0]["capacity"],city =j[0]["city"],country = j[0]["country"],desc = j[0]["desc"],cost = j[0]["cost"],picture = j[0]["picture"],map = j[0]["map"])
         t.save()
 
-'''
+"""
+
+
 def image_to_base64(img):
-    image = open(img,"rb")
-    b64 = base64.b64encode(image.read()).decode('utf-8')
+    image = open(img, "rb")
+    b64 = base64.b64encode(image.read()).decode("utf-8")
     return b64
+
 
 def base64_to_image(b64):
     imagebyte = base64.b64decode(b64)
@@ -60,46 +63,86 @@ def base64_to_image(b64):
     imaged.save("hello.png")
     return image
 
-def home(request):
-    #add_stadium()
-    return render(request,"home.html")
 
+def home(request):
+    # add_stadium()
+    return render(request, "home.html")
 
 
 class stadiums_view(APIView):
     serializer_class = stadiumsseria
-    def get(self,request):
-        out = [{"id":o.id,"name":o.name,"capacity":o.capacity,"city":o.city,"country":o.country,"desc":o.desc,"cost":o.cost,"picture":json.loads(o.picture),"map":o.map} for o in stadiums.objects.all() ]
+
+    def get(self, request):
+        out = [
+            {
+                "id": o.id,
+                "name": o.name,
+                "capacity": o.capacity,
+                "city": o.city,
+                "country": o.country,
+                "desc": o.desc,
+                "cost": o.cost,
+                "picture": json.loads(o.picture),
+                "map": o.map,
+            }
+            for o in stadiums.objects.all()
+        ]
         return Response(out)
 
 
 class user_view(APIView):
     serializer_class = userseria
-    def get(self,request):
-        out = [{"id":o.id,"username":o.username,"email":o.email,"password":o.password,"gender":o.gender,"phone":o.phone,"country":o.country} for o in user.objects.all()]
+
+    def get(self, request):
+        out = [
+            {
+                "id": o.id,
+                "username": o.username,
+                "email": o.email,
+                "password": o.password,
+                "gender": o.gender,
+                "phone": o.phone,
+                "country": o.country,
+            }
+            for o in user.objects.all()
+        ]
         return Response(out)
 
 
-@api_view(['POST',])
-
+@api_view(
+    [
+        "POST",
+    ]
+)
 def create_user(request):
-    if request.method=="POST":
+    if request.method == "POST":
         serializer = userseria(data=request.data)
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data,status=status.HTTP_201_CREATED)
-        return Response("failed",status=status.HTTP_400_BAD_REQUEST)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response("failed", status=status.HTTP_400_BAD_REQUEST)
 
-@api_view(['GET',])
 
-def get_user(request,email):
+@api_view(
+    [
+        "GET",
+    ]
+)
+def get_user(request, email):
     if request.method == "GET":
         userthis = user.objects.all().filter(email=email)
 
         try:
-            d = {"id":userthis[0].id,"username":userthis[0].username,"email":userthis[0].email,"password":userthis[0].password,"gender":userthis[0].gender,"phone":userthis[0].phone,"country":userthis[0].country}
+            d = {
+                "id": userthis[0].id,
+                "username": userthis[0].username,
+                "email": userthis[0].email,
+                "password": userthis[0].password,
+                "gender": userthis[0].gender,
+                "phone": userthis[0].phone,
+                "country": userthis[0].country,
+            }
             return Response(d)
         except:
-            return Response("user not exist",status=status.HTTP_404_NOT_FOUND)
-        #serializer = userseria
-        
+            return Response("user not exist", status=status.HTTP_404_NOT_FOUND)
+        # serializer = userseria
