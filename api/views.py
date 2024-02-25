@@ -9,7 +9,7 @@ from io import BytesIO
 from PIL import Image, ImageOps
 import json
 
-"""
+
 s1 = {"name":"Stade Ibn Batouta","capacity":65000,"city":"tangier","country":"morocco","desc":"The newly built stadium in south-western outskirts of Tangier (by the N1 national road) isn't only the city's largest sports facility, but the largest building overall. Construction was marred with delays and lasted almost 9 years in the end. Began in 2002, it wasn't delivered until 2011. And it may still seem look unfinished to some, not without purpose. Both end zones were left single-tiered, but with the footing for an upper tier to be added in the future. Similarly, the east stand already has support structures for its future roof, should funds be allocated to build one.","cost":844,"picture":{},"map":"https://maps.app.goo.gl/aTUaf4hKfcCLAgAF9"}
 s1_path=["C:/Users/pp/Desktop/devjam/api/images/tangier/main.jpg","C:/Users/pp/Desktop/devjam/api/images/tangier/s1.jpg","C:/Users/pp/Desktop/devjam/api/images/tangier/s2.jpg","C:/Users/pp/Desktop/devjam/api/images/tangier/s3.jpg","C:/Users/pp/Desktop/devjam/api/images/tangier/s4.jpg"]
 
@@ -34,19 +34,18 @@ s6_path=["C:/Users/pp/Desktop/devjam/api/images/fes/main.jpg","C:/Users/pp/Deskt
 
 
 def add_stadium():
-    all = [(s2,s2_path),(s3,s3_path),(s4,s4_path),(s5,s5_path),(s6,s6_path)]
+    all = [(s1,s1_path),(s2,s2_path),(s3,s3_path),(s4,s4_path),(s5,s5_path),(s6,s6_path)]
     for j in all:
 
         d = {}
         names = ["main","p1","p2","p3","p4"]
-        for i in range(len(s1_path)):
-            d.update({names[i]:image_to_base64(j[1][i])})
-        j[0]["picture"] = d
+        
+        
         
         t = stadiums(name=j[0]["name"],capacity = j[0]["capacity"],city =j[0]["city"],country = j[0]["country"],desc = j[0]["desc"],cost = j[0]["cost"],picture = j[0]["picture"],map = j[0]["map"])
         t.save()
 
-"""
+
 
 
 def image_to_base64(img):
@@ -65,7 +64,7 @@ def base64_to_image(b64):
 
 
 def home(request):
-    # add_stadium()
+    add_stadium()
     return render(request, "home.html")
 
 

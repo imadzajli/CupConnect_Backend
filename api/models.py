@@ -46,6 +46,15 @@ a = {
     "s4": "https://firebasestorage.googleapis.com/v0/b/devjamxcyberops.appspot.com/o/stadiums%2Fagadir%2Fs4.jpg?alt=media&token=afafae9c-2a88-4f32-bc92-679e2e2f5469",
 }
 
+class stadiums(models.Model):
+    name = models.CharField(max_length=50)
+    capacity = models.IntegerField()
+    city = models.CharField(max_length=20)
+    country = models.CharField(max_length=20)
+    desc = models.TextField()
+    cost = models.IntegerField()
+    picture = models.TextField()
+    map = models.CharField(max_length=300)
 
 class Hotel(models.Model):
     """
@@ -56,18 +65,11 @@ class Hotel(models.Model):
     description = models.TextField()
     min_price = models.IntegerField()
     max_price = models.IntegerField()
+    stad = models.ForeignKey(stadiums, on_delete=models.CASCADE)
 
 
-class stadiums(models.Model):
-    name = models.CharField(max_length=50)
-    capacity = models.IntegerField()
-    city = models.CharField(max_length=20)
-    country = models.CharField(max_length=20)
-    desc = models.TextField()
-    cost = models.IntegerField()
-    picture = models.TextField()
-    map = models.CharField(max_length=300)
-    hotels = models.ForeignKey(Hotel, on_delete=models.CASCADE)
+
+    
 
 
 class user(models.Model):
