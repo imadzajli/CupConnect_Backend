@@ -65,7 +65,7 @@ def base64_to_image(b64):
 
 
 def home(request):
-    add_stadium()
+    #add_stadium()
     return render(request, "home.html")
 
 
