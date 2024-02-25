@@ -1,4 +1,5 @@
 from django.shortcuts import render,HttpResponse
+from django.http import JsonResponse
 from rest_framework.views import APIView
 from rest_framework import generics, status
 from rest_framework.decorators import api_view
@@ -152,19 +153,17 @@ def get_user(request, email):
 
 
 def update_user(request,attribute,id,new_value):
+   
+    userinfo = user.objects.all().filter(id=id)[0] 
     
-    
-    if request.method == "PUT":
-        userinfo = user.objects.all().filter(id=id)[0] 
+    if attribute == "username":
+        userinfo.username=new_value
         
-        if attribute == "username":
-            userinfo.username=new_value
-            
-        if attribute == "phone":
-            userinfo.phone = new_value
-        if attribute == "password":
-            userinfo.password = new_value
-        userinfo.save()
+    if attribute == "phone":
+        userinfo.phone = new_value
+    if attribute == "password":
+        userinfo.password = new_value
+    userinfo.save()
 
-        return HttpResponse("api/user/")
+    return JsonResponse({"message":"done"})
         
