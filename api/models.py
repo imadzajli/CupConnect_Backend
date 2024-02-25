@@ -10,8 +10,18 @@ m = {"main":"https://firebasestorage.googleapis.com/v0/b/devjamxcyberops.appspot
 f = {"main":"https://firebasestorage.googleapis.com/v0/b/devjamxcyberops.appspot.com/o/stadiums%2Ffes%2Fmain.jpg?alt=media&token=bb003150-0ad4-4ea9-947f-42ecaead500d","s1":"https://firebasestorage.googleapis.com/v0/b/devjamxcyberops.appspot.com/o/stadiums%2Ffes%2Fs1.jpg?alt=media&token=702d8bac-f20c-4ac8-865a-afc5a886554c","s2":"https://firebasestorage.googleapis.com/v0/b/devjamxcyberops.appspot.com/o/stadiums%2Ffes%2Fs2.avif?alt=media&token=a0efdb81-7777-4362-b74d-75077d2bfff7","s3":"https://firebasestorage.googleapis.com/v0/b/devjamxcyberops.appspot.com/o/stadiums%2Ffes%2Fs3.jpg?alt=media&token=65e71fa9-75e6-458f-83c7-f6d07795c65d","s4":"https://firebasestorage.googleapis.com/v0/b/devjamxcyberops.appspot.com/o/stadiums%2Ffes%2Fs4.jpg?alt=media&token=5a92d94d-9c32-4018-b4f4-f3d7302e78a0"}
 a = {"main":"https://firebasestorage.googleapis.com/v0/b/devjamxcyberops.appspot.com/o/stadiums%2Fagadir%2Fmain.jpg?alt=media&token=959c0346-d22e-4051-b317-6fd6cdb95b28","s1":"https://firebasestorage.googleapis.com/v0/b/devjamxcyberops.appspot.com/o/stadiums%2Fagadir%2Fs1.jpg?alt=media&token=626f992f-01e7-4d8b-8a30-51ba62b40713","s2":"https://firebasestorage.googleapis.com/v0/b/devjamxcyberops.appspot.com/o/stadiums%2Fagadir%2Fs2.jpg?alt=media&token=202d9d73-54cb-4213-b627-e09557106627","s3":"https://firebasestorage.googleapis.com/v0/b/devjamxcyberops.appspot.com/o/stadiums%2Fagadir%2Fs3.jpg?alt=media&token=688d2913-72f1-4641-9f7b-180274bc1dc0","s4":"https://firebasestorage.googleapis.com/v0/b/devjamxcyberops.appspot.com/o/stadiums%2Fagadir%2Fs4.jpg?alt=media&token=afafae9c-2a88-4f32-bc92-679e2e2f5469"}
 
+
+class Hotel(models.Model):
+    """
+       Hotels near stadiums 
+    """
+    name = models.CharField(max_length=50)
+    description = models.TextField()
+    min_price = models.IntegerField()
+    max_price = models.IntegerField()
+    
 class stadiums(models.Model):
-    name=models.CharField(max_length=50)
+    name = models.CharField(max_length=50)
     capacity = models.IntegerField()
     city = models.CharField(max_length=20)
     country = models.CharField(max_length=20)
@@ -19,14 +29,12 @@ class stadiums(models.Model):
     cost = models.IntegerField()
     picture = models.TextField()
     map = models.CharField(max_length=300)
+    hotels = models.ForeignKey(Hotel, on_delete=models.CASCADE)
 
 class user(models.Model):
-    username=models.CharField(max_length=15)
+    username = models.CharField(max_length=15)
     email = models.EmailField()
     password = models.CharField(max_length=30)
     gender = models.CharField(max_length=1)
     phone = models.CharField(max_length=20)
     country = models.CharField(max_length=30)
-
-
-
