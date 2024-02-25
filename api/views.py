@@ -95,8 +95,11 @@ def create_user(request):
 def get_user(request,email):
     if request.method == "GET":
         userthis = user.objects.all().filter(email=email)
-        if userthis=={}:
-            return Response("user not found",status=status.HTTP_404_NOT_FOUND)
+
+        try:
+            d = {"id":userthis[0].id,"username":userthis[0].username,"email":userthis[0].email,"password":userthis[0].password,"gender":userthis[0].gender,"phone":userthis[0].phone,"country":userthis[0].country}
+            return Response(d)
+        except:
+            return Response("user not exist",status=status.HTTP_404_NOT_FOUND)
         #serializer = userseria
-        d = {"id":userthis["id"],"username":userthis["username"],"email":userthis["email"],"password":userthis["password"],"gender":userthis["gender"],"phone":userthis["phone"],"country":userthis["country"]}
-        return Response("this is the user : ",d)
+        
