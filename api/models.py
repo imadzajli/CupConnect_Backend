@@ -111,7 +111,7 @@ class place(ExportModelOperationsMixin('place'), models.Model):
 
 
 class dishe(ExportModelOperationsMixin('dishe'), models.Model):
-    name= models.CharField(max_length=30)
+    name= models.CharField(max_length=50)
     city_id = models.ForeignKey(Cities,on_delete=models.CASCADE)
     desc = models.TextField()
     image = models.CharField(max_length=300)
