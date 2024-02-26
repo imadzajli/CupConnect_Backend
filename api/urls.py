@@ -10,5 +10,7 @@ urlpatterns = [
     path("api/user/getuser/<str:email>", get_user),
     path("api/user/update/<str:attribute>/<int:id>/<str:new_value>",update_user),
     path("api/city/",city_view.as_view()),
-    path("api/city/<int:stad_id>",get_city_by_stad),
+    path("api/city/<int:id>",get_city_by_stad),
+    path("api/place/",place_view.as_view()),
+    path("api/place/<str:city>",get_places_by_city),
 ]

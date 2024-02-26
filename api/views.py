@@ -310,14 +310,32 @@ class city_view(APIView):
     def get(self,request):
         res = [{"id":r.id,"name":r.name,"desc":r.desc,"population":r.population,"transport":r.transport,"date":r.creation_date,"stadium":{'id':r.stad_id.id,'name':r.stad_id.name},"image":r.image } for r in Cities.objects.all()]
         return Response(res)
+    
+class place_view(APIView):
+    serializer_class = placeseria
+    def get(self,request):
+        res = [{"id":r.id,"name":r.name,"desc":r.desc,"location":r.location,"city":r.city_id.name,"image":r.image } for r in place.objects.all()]
+        return Response(res)
 
 @api_view(['GET'])
 #@permission_classes([permissions.IsAuthenticated])
-def get_city_by_stad(request,stad_id):
+def get_city_by_stad(request,id):
     if request.method == 'GET':
         try:
-            stadium = stadiums.objects.get(id=stad_id) #parameter
-            city = Cities.objects.get(stad_id=stadium) #attribute
+            stadium = stadiums.objects.get(id=id) #parameter
+            city = Cities.objects.all().filter(stad_id=stadium).values()[0] #attribute
             return Response(city,status=status.HTTP_200_OK)
+        except:
+            return Response("error",status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['GET'])
+
+def get_places_by_city(request,city):
+    if request.method == 'GET':
+        try:
+            cityf = Cities.objects.get(name=city)
+            c_places = place.objects.all().filter(city_id=cityf).values()
+            return Response(c_places,status=status.HTTP_200_OK)
         except:
             return Response("error",status=status.HTTP_400_BAD_REQUEST)
