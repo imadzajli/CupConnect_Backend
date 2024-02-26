@@ -17,7 +17,7 @@ dishes = {
             "img":""
         }
     },
-    "Casablance":{
+    "Casablanca":{
         "a":{
             "name":"Lakhli'i",
             "desc":"Khli'i is considered the favorite dish of people in Fes and its surrounding regions. The name khli'i springs from the term to preserve something for a long time until it becomes ready to be consumed. This type of food is made of kaddid, which is a combination of beef ribs, salt, altsfirh, cumin, coriander, and oil. We cut the beef ribs into thin pieces, mix with the spices and oil, and hang the pieces in a sunny place for up to three days or until they are dried. To make the khli'i, we put the kaddid pieces in fire, then we add a boiled robe with one letter of oil. Finally, it is put in a glass bottle in the refrigerator. It is served hot for lunch or dinner or, as some people prefer, with tea in the morning.",
@@ -35,6 +35,21 @@ dishes = {
             "img":""
         }
     },
-
-
+    "Rabat": {
+        "a": {
+            "name": "M'assal",
+            "desc": "is a sweet and salty meat tajine, combining a ras el hanout blend of spices with honey, cinnamon and almonds. This tajine is one of the traditional dishes of the Eid al-Adha Muslim festival (Festival of Sacrifice). It is often made of lamb from animals ritually sacrificed during the festival.",
+            "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/IB_tajine_02.jpg/960px-IB_tajine_02.jpg"
+        },
+        "b": {
+            "name": "Atay",
+            "desc": "also known as Moroccan mint tea. Is a preparation of gunpowder green tea with spearmint leaves and sugar. Traditionally, the tea is served three times. The amount of time it has been steeping gives each of the glasses of tea a unique flavor, described in this famous Maghrebi proverb: << The first glass is as gentle as life, the second is as strong as love, the third is as bitter as death >>",
+            "img": "https://upload.wikimedia.org/wikipedia/commons/3/35/ThiMil_The5.jpg"
+        },
+        "c": {
+            "name": "Zaalouk",
+            "desc": "is a Moroccan salad of cooked eggplants and tomatoes. After being grilled, the eggplant is combined with the tomatoes and seasoned with spices and garlic.",
+            "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Zaalouk-01.JPG/964px-Zaalouk-01.JPG"
+        }
+    }
 }
