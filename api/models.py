@@ -116,3 +116,4 @@ class dishe(models.Model):
     city_id = models.ForeignKey(Cities,on_delete=models.CASCADE)
     desc = models.TextField()
     image = models.CharField(max_length=300)
+    d=models.TextField()
