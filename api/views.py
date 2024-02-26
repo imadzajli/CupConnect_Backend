@@ -347,3 +347,21 @@ def get_places_by_city(request,city):
             return Response(c_places,status=status.HTTP_200_OK)
         except:
             return Response("error",status=status.HTTP_400_BAD_REQUEST)
+
+
+class dishe_view(APIView):
+    serializer = disheseria
+    def get(self,request):
+        res = [{"id":r.id,"name":r.name,"desc":r.desc,"city":r.city_id.name,"image":r.image } for r in dishe.objects.all()]
+        return Response(res)
+    
+@api_view(['GET'])
+
+def get_dishe_by_city(request,cname):
+    if request.method == 'GET':
+        try:
+            ct = Cities.objects.get(name=cname)
+            obj = dishe.objects.all().filter(city_id=ct).values()
+            return Response(obj,status=status.HTTP_200_OK)
+        except:
+            return Response("error",status=status.HTTP_404_NOT_FOUND)

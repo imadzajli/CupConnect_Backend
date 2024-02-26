@@ -13,4 +13,6 @@ urlpatterns = [
     path("api/city/<int:id>",get_city_by_stad),
     path("api/place/",place_view.as_view()),
     path("api/place/<str:city>",get_places_by_city),
+    path("api/dishes/",dishe_view.as_view()),
+    path("api/dishes/<str:cname>",get_dishe_by_city),
 ]
