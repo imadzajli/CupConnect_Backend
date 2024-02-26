@@ -198,7 +198,8 @@ class user_view(APIView):
         out = [
             {
                 "id": o.id,
-                "username": o.username,
+                "last_name": o.last_name,
+                "first_name": o.first_name,
                 "email": o.email,
                 "password": o.password,
                 "gender": o.gender,

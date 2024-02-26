@@ -17,6 +17,7 @@ redis = "^5.0.1"
 django-redis = "^5.4.0"
 django-prometheus = "^2.3.1"
 requests = "^2.31.0"
+djangorestframework-simplejwt = "^5.3.1"
 
 
 [build-system]

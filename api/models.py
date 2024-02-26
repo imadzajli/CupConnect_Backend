@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
 
 # lets creat a json to return data = ['name','capacity','city','country','desc','cost','picturesx7']
@@ -80,35 +81,11 @@ class Hotel(models.Model):
     
 
 
-class user(models.Model):
-    username = models.CharField(max_length=15)
-    email = models.EmailField()
+class user(AbstractUser):
+    first_name = models.CharField(max_length=20)
+    last_name = models.CharField(max_length=20)
+    email = models.EmailField(unique=True)
     password = models.CharField(max_length=30)
     gender = models.CharField(max_length=1)
     phone = models.CharField(max_length=20)
     country = models.CharField(max_length=30)
-
-
-class Cities(models.Model):
-    name = models.CharField(max_length=20)
-    stad_id = models.ForeignKey(stadiums,on_delete=models.Case)
-    desc = models.TextField()
-    population = models.BigIntegerField()
-    creation_date = models.IntegerField()
-    transport = models.TextField()
-    image = models.CharField(max_length=350)
-
-class place(models.Model):
-    name = models.CharField(max_length=20)
-    city_id = models.ForeignKey(Cities,on_delete=models.CASCADE)
-    desc = models.TextField()
-    location = models.CharField(max_length=100)
-    distance_from_stadium = models.FloatField()
-    image = models.CharField(max_length=300)
-
-
-class dishe(models.Model):
-    name= models.CharField(max_length=30)
-    city_id = models.ForeignKey(Cities,on_delete=models.CASCADE)
-    desc = models.TextField()
-    image = models.CharField(max_length=300)
