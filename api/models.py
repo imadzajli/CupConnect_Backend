@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-
+from django_prometheus.models import ExportModelOperationsMixin
 
 # lets creat a json to return data = ['name','capacity','city','country','desc','cost','picturesx7']
 
@@ -47,7 +47,7 @@ a = {
     "s4": "https://firebasestorage.googleapis.com/v0/b/devjamxcyberops.appspot.com/o/stadiums%2Fagadir%2Fs4.jpg?alt=media&token=afafae9c-2a88-4f32-bc92-679e2e2f5469",
 }
 
-class stadiums(models.Model):
+class stadiums(ExportModelOperationsMixin('stadiums'), models.Model):
     name = models.CharField(max_length=50)
     capacity = models.IntegerField()
     city = models.CharField(max_length=20)
@@ -59,7 +59,7 @@ class stadiums(models.Model):
     longitude = models.FloatField(null=True)
     latitude = models.FloatField(null=True)
 
-class Hotel(models.Model):
+class Hotel(ExportModelOperationsMixin('Hotel'), models.Model):
     """
     Hotels near stadiums
     """
@@ -81,7 +81,7 @@ class Hotel(models.Model):
     
 
 
-class user(AbstractUser):
+class user(ExportModelOperationsMixin('user'), AbstractUser):
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=20)
     email = models.EmailField(unique=True)
@@ -93,7 +93,7 @@ class user(AbstractUser):
     REQUIRED_FIELDS = ['password', 'phone', 'country', 'gender', 'first_name', 'last_name']
 
 
-class Cities(models.Model):
+class Cities(ExportModelOperationsMixin('cities'), models.Model):
     name = models.CharField(max_length=20)
     stad_id = models.ForeignKey(stadiums,on_delete=models.Case)
     desc = models.TextField()
@@ -102,7 +102,7 @@ class Cities(models.Model):
     transport = models.TextField()
     image = models.CharField(max_length=350)
 
-class place(models.Model):
+class place(ExportModelOperationsMixin('place'), models.Model):
     name = models.CharField(max_length=50)
     city_id = models.ForeignKey(Cities,on_delete=models.CASCADE)
     desc = models.TextField()
@@ -110,7 +110,7 @@ class place(models.Model):
     image = models.CharField(max_length=300)
 
 
-class dishe(models.Model):
+class dishe(ExportModelOperationsMixin('dishe'), models.Model):
     name= models.CharField(max_length=30)
     city_id = models.ForeignKey(Cities,on_delete=models.CASCADE)
     desc = models.TextField()
