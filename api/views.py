@@ -170,7 +170,7 @@ def base64_to_image(b64):
 def home(request):
     #add_cities()
     #migrate()
-    add_places()
+    #add_places()
 
     return render(request, "home.html")
 
