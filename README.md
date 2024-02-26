@@ -1,4 +1,4 @@
-# ✨ CupConnect API ✨
+# CupConnect API 🧑‍💻
 
 Our backend for CupConnect ⚽ ✈️ made with Django 🐍
 
