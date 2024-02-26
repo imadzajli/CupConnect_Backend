@@ -47,7 +47,8 @@ a = {
     "s4": "https://firebasestorage.googleapis.com/v0/b/devjamxcyberops.appspot.com/o/stadiums%2Fagadir%2Fs4.jpg?alt=media&token=afafae9c-2a88-4f32-bc92-679e2e2f5469",
 }
 
-class stadiums(ExportModelOperationsMixin('stadiums'), models.Model):
+
+class stadiums(ExportModelOperationsMixin("stadiums"), models.Model):
     name = models.CharField(max_length=50)
     capacity = models.IntegerField()
     city = models.CharField(max_length=20)
@@ -59,10 +60,12 @@ class stadiums(ExportModelOperationsMixin('stadiums'), models.Model):
     longitude = models.FloatField(null=True)
     latitude = models.FloatField(null=True)
 
-class Hotel(ExportModelOperationsMixin('Hotel'), models.Model):
+
+class Hotel(ExportModelOperationsMixin("Hotel"), models.Model):
     """
     Hotels near stadiums
     """
+
     name = models.CharField(max_length=50)
     properties = models.TextField()
     min_price = models.IntegerField(null=True)
@@ -73,15 +76,11 @@ class Hotel(ExportModelOperationsMixin('Hotel'), models.Model):
     map = models.TextField(null=True)
     latitude = models.FloatField(null=True)
     longitude = models.FloatField(null=True)
-    hotel_id = models.IntegerField(null=True) # Booking.com Id
+    hotel_id = models.IntegerField(null=True)  # Booking.com Id
     stad = models.ForeignKey(stadiums, on_delete=models.CASCADE)
 
 
-
-    
-
-
-class user(ExportModelOperationsMixin('user'), AbstractUser):
+class user(ExportModelOperationsMixin("user"), AbstractUser):
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=20)
     email = models.EmailField(unique=True)
@@ -89,30 +88,37 @@ class user(ExportModelOperationsMixin('user'), AbstractUser):
     gender = models.CharField(max_length=1)
     phone = models.CharField(max_length=20)
     country = models.CharField(max_length=30)
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['password', 'phone', 'country', 'gender', 'first_name', 'last_name']
+    USERNAME_FIELD = "email"
+    REQUIRED_FIELDS = [
+        "password",
+        "phone",
+        "country",
+        "gender",
+        "first_name",
+        "last_name",
+    ]
 
 
-class Cities(ExportModelOperationsMixin('cities'), models.Model):
+class Cities(ExportModelOperationsMixin("cities"), models.Model):
     name = models.CharField(max_length=20)
-    stad_id = models.ForeignKey(stadiums,on_delete=models.Case)
+    stad_id = models.ForeignKey(stadiums, on_delete=models.Case)
     desc = models.TextField()
     population = models.BigIntegerField()
     creation_date = models.IntegerField()
     transport = models.TextField()
     image = models.CharField(max_length=350)
 
-class place(ExportModelOperationsMixin('place'), models.Model):
+
+class place(ExportModelOperationsMixin("place"), models.Model):
     name = models.CharField(max_length=50)
-    city_id = models.ForeignKey(Cities,on_delete=models.CASCADE)
+    city_id = models.ForeignKey(Cities, on_delete=models.CASCADE)
     desc = models.TextField()
     location = models.CharField(max_length=100)
     image = models.CharField(max_length=300)
 
 
-class dishe(ExportModelOperationsMixin('dishe'), models.Model):
-    name= models.CharField(max_length=50)
-    city_id = models.ForeignKey(Cities,on_delete=models.CASCADE)
+class dishe(ExportModelOperationsMixin("dishe"), models.Model):
+    name = models.CharField(max_length=50)
+    city_id = models.ForeignKey(Cities, on_delete=models.CASCADE)
     desc = models.TextField()
     image = models.CharField(max_length=300)
-   
