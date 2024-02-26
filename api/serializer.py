@@ -24,7 +24,7 @@ class stadiumsseria(serializers.ModelSerializer):
 class userseria(serializers.ModelSerializer):
     class Meta:
         model = user
-        fields = ("id", "username", "email", "password", "gender", "phone", "country")
+        fields = ("id", "first_name", "last_name", "email", "password", "gender", "phone", "country")
 
 
 class hotelseria(serializers.ModelSerializer):
