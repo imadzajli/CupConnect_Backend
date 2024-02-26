@@ -17,7 +17,7 @@ class stadiumsseria(serializers.ModelSerializer):
             "cost",
             "picture",
             "latitude",
-            "longtitude",
+            "longitude",
         )
 
 
@@ -33,9 +33,16 @@ class hotelseria(serializers.ModelSerializer):
         fields = (
             "id",
             "name",
-            "description",
+            "properties",
             "min_price",
             "max_price",
+            "latitude",
+            "longitude",
+            "image",
+            "map",
+            "review",
+            "address",
+            "hotel_id",
             "stad"
         )
 

@@ -55,18 +55,24 @@ class stadiums(models.Model):
     cost = models.IntegerField()
     picture = models.JSONField()
     map = models.CharField(max_length=300)
-    longtitude = models.FloatField(null=True)
+    longitude = models.FloatField(null=True)
     latitude = models.FloatField(null=True)
 
 class Hotel(models.Model):
     """
     Hotels near stadiums
     """
-
     name = models.CharField(max_length=50)
-    description = models.TextField()
-    min_price = models.IntegerField()
-    max_price = models.IntegerField()
+    properties = models.TextField()
+    min_price = models.IntegerField(null=True)
+    max_price = models.IntegerField(null=True)
+    address = models.CharField(max_length=200, null=True)
+    review = models.FloatField(null=True)
+    image = models.TextField(null=True)
+    map = models.TextField(null=True)
+    latitude = models.FloatField(null=True)
+    longitude = models.FloatField(null=True)
+    hotel_id = models.IntegerField(null=True) # Booking.com Id
     stad = models.ForeignKey(stadiums, on_delete=models.CASCADE)
 
 
