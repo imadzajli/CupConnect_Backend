@@ -78,7 +78,7 @@ dishes = {
         },
         "b": {
             "name": "Harira",
-            "desc": "is a traditional Moroccan soup It is popular as a starter but is also eaten on its own as a light snack. There are many variations and it is mostly served during Ramadan, although it can be made throughout the year."
+            "desc": "is a traditional Moroccan soup It is popular as a starter but is also eaten on its own as a light snack. There are many variations and it is mostly served during Ramadan, although it can be made throughout the year.",
             "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/%D8%AD%D8%B1%D9%8A%D8%B1%D8%A9.jpg/720px-%D8%AD%D8%B1%D9%8A%D8%B1%D8%A9.jpg"
         },
         "c": {
