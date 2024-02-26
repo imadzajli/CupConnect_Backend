@@ -177,6 +177,7 @@ def home(request):
     #add_cities()
     #migrate()
     #add_places()
+    #add_dishes()
 
     return render(request, "home.html")
 
