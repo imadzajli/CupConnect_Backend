@@ -51,5 +51,15 @@ dishes = {
             "desc": "is a Moroccan salad of cooked eggplants and tomatoes. After being grilled, the eggplant is combined with the tomatoes and seasoned with spices and garlic.",
             "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Zaalouk-01.JPG/964px-Zaalouk-01.JPG"
         }
+    },
+    "Marrakech": {
+        "a": {
+            "name": "Tangia",
+            "desc": "is prepared with lamb shank or any other meat of choice, one or more preserved lemons, fresh whole cumin, garlic, and saffron melted in water and two tablespoons of olive oil. All the ingredients are put in an amphora that is covered with sealed parchment paper, placed in the embers or the oven and slow cooked for hours.",
+            "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Tangia_in_Marrakech_03.jpg/640px-Tangia_in_Marrakech_03.jpg"
+        },
+        "b": {
+            
+        }
     }
 }
