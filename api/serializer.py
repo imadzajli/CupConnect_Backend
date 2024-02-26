@@ -16,6 +16,8 @@ class stadiumsseria(serializers.ModelSerializer):
             "desc",
             "cost",
             "picture",
+            "latitude",
+            "longtitude",
         )
 
 

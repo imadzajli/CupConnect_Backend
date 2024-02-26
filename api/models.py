@@ -55,6 +55,8 @@ class stadiums(models.Model):
     cost = models.IntegerField()
     picture = models.TextField()
     map = models.CharField(max_length=300)
+    longtitude = models.FloatField(null=True)
+    latitude = models.FloatField(null=True)
 
 class Hotel(models.Model):
     """
