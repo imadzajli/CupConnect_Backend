@@ -2,7 +2,7 @@ from django.shortcuts import render,HttpResponse
 from django.http import JsonResponse
 from rest_framework.views import APIView
 from rest_framework import generics, status
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from .serializer import *
 import base64
@@ -13,6 +13,7 @@ from django.utils.decorators import method_decorator
 from django.views.decorators.cache import cache_page
 from .utils import hotels
 from.utils.city import *
+from rest_framework import permissions
 
 
 t = {
@@ -168,6 +169,7 @@ def home(request):
 
 class stadiums_view(APIView):
     serializer_class = stadiumsseria
+    permission_classes = [permissions.IsAuthenticated]
 
     @method_decorator(cache_page(CACHE_TTL))
     def get(self, request):
@@ -212,6 +214,7 @@ class user_view(APIView):
 
 class hotel_view(APIView):
     serializer_class = hotelseria
+    permission_classes = [permissions.IsAuthenticated]
 
     @method_decorator(cache_page(CACHE_TTL))
     def get(self, request, stad_id):
@@ -276,6 +279,7 @@ def get_user(request, email):
 
 
 
+@permission_classes([permissions.IsAuthenticated])
 def update_user(request,attribute,id,new_value):
    
     userinfo = user.objects.all().filter(id=id)[0] 
@@ -300,7 +304,7 @@ class city_view(APIView):
         return Response(res)
 
 @api_view(['GET'])
-
+@permission_classes([permissions.IsAuthenticated])
 def get_city_by_stad(request,stad_id):
     if request.method == 'GET':
         try:

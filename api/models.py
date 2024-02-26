@@ -89,6 +89,8 @@ class user(AbstractUser):
     gender = models.CharField(max_length=1)
     phone = models.CharField(max_length=20)
     country = models.CharField(max_length=30)
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['password', 'phone', 'country', 'gender', 'first_name', 'last_name']
 
 
 class Cities(models.Model):
