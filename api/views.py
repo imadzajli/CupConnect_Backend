@@ -248,7 +248,8 @@ def get_user(request, email):
         try:
             d = {
                 "id": userthis[0].id,
-                "username": userthis[0].username,
+                "first_name": userthis[0].first_name,
+                "last_name": userthis[0].last_name,
                 "email": userthis[0].email,
                 "password": userthis[0].password,
                 "gender": userthis[0].gender,
@@ -266,8 +267,10 @@ def update_user(request,attribute,id,new_value):
    
     userinfo = user.objects.all().filter(id=id)[0] 
     
-    if attribute == "username":
-        userinfo.username=new_value
+    if attribute == "first_name":
+        userinfo.first_name=new_value
+    if attribute == "last_name":
+        userinfo.last_name=new_value
         
     if attribute == "phone":
         userinfo.phone = new_value
