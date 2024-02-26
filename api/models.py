@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
 
 # lets creat a json to return data = ['name','capacity','city','country','desc','cost','picturesx7']
@@ -80,10 +81,16 @@ class Hotel(models.Model):
     
 
 
-class user(models.Model):
-    username = models.CharField(max_length=15)
-    email = models.EmailField()
+class user(AbstractUser):
+    first_name = models.CharField(max_length=20)
+    last_name = models.CharField(max_length=20)
+    email = models.EmailField(primary_key=True)
     password = models.CharField(max_length=30)
     gender = models.CharField(max_length=1)
     phone = models.CharField(max_length=20)
     country = models.CharField(max_length=30)
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = [
+        'first_name', 'last_name',
+        'password', 'gender', 'phone', 'country'
+    ]
