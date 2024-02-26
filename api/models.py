@@ -107,7 +107,6 @@ class place(models.Model):
     city_id = models.ForeignKey(Cities,on_delete=models.CASCADE)
     desc = models.TextField()
     location = models.CharField(max_length=100)
-    distance_from_stadium = models.FloatField()
     image = models.CharField(max_length=300)
 
 
