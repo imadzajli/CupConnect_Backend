@@ -86,5 +86,22 @@ dishes = {
             "desc": "is a sweet or savory puff pastry. Briouats are filled with meat (mostly chicken or lamb) or fish and shrimp, mixed with cheese, lemon and pepper. They are wrapped in warqa (a paper-thin dough) in a triangular or cylindrical shape. Briouats can also be sweet, filled with almond or peanut paste and fried, then dipped in warm honey flavored with orange blossom water.",
             "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Moroccan_food-02.jpg/640px-Moroccan_food-02.jpg"
         }
+    },
+    "Agadir": {
+        "a": {
+           "name": "Bissara",
+            "desc": "contains split fava beans, onions, garlic, fresh aromatic herbs and spices. All ingredients are slowly cooked and then blended together to yield a creamy and fragrant dip or side dish. ",
+            "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Bissara_Moroccan_split_pea_and_fava_bean_soup.jpg/480px-Bissara_Moroccan_split_pea_and_fava_bean_soup.jpg"
+        },
+        "b": {
+            "name": "Ghorayeba",
+            "desc": "is a shortbread-type biscuit, usually made with ground almonds. They are often served with Atay",
+            "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Kurabiyes_in_the_form_of_medialuna.jpg/960px-Kurabiyes_in_the_form_of_medialuna.jpg"
+        },
+        "c": {
+            "name": "Sfenj",
+            "desc": "is a Maghrebi doughnut: a light, spongy ring of dough fried in oil. Sfenj is eaten plain, sprinkled with sugar, or soaked in honey. It is a well-known dish in the Maghreb and is traditionally made and sold early in the morning for breakfast or in the late afternoon accompanied by tea—usually Maghrebi mint tea—or coffee.",
+            "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Sfenj_in_Marrakesh_Morocco.jpg/720px-Sfenj_in_Marrakesh_Morocco.jpg"
+        }
     }
 }
