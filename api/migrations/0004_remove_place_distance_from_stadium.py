@@ -4,14 +4,13 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('api', '0003_remove_dishe_d'),
+        ("api", "0003_remove_dishe_d"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='place',
-            name='distance_from_stadium',
+            model_name="place",
+            name="distance_from_stadium",
         ),
     ]

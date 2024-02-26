@@ -4,15 +4,14 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('api', '0005_alter_place_name'),
+        ("api", "0005_alter_place_name"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='dishe',
-            name='name',
+            model_name="dishe",
+            name="name",
             field=models.CharField(max_length=50),
         ),
     ]
