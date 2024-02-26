@@ -89,7 +89,6 @@ class user(AbstractUser):
     gender = models.CharField(max_length=1)
     phone = models.CharField(max_length=20)
     country = models.CharField(max_length=30)
-<<<<<<< HEAD
 
 
 class Cities(models.Model):
@@ -115,10 +114,3 @@ class dishe(models.Model):
     city_id = models.ForeignKey(Cities,on_delete=models.CASCADE)
     desc = models.TextField()
     image = models.CharField(max_length=300)
-=======
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = [
-        'first_name', 'last_name',
-        'password', 'gender', 'phone', 'country'
-    ]
->>>>>>> fccb6e48ce0247a9d9e2c7edff424d87d72f71f1
