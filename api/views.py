@@ -86,7 +86,6 @@ class stadiums_view(APIView):
 
     @method_decorator(cache_page(CACHE_TTL))
     def get(self, request):
-        print(stadiums.objects.all())
         out = [
             {
                 "id": o.id,
