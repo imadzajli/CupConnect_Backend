@@ -96,6 +96,12 @@ def add_places():
         for i in places[j]:
             pl = place(name=places[j][i]['name'],desc=places[j][i]['desc'],location=places[j][i]['location'],image=places[j][i]['img'],city_id=ct)
             pl.save()
+def add_dishes():
+    for j in dishe:
+        ct = Cities.objects.get(name=j)
+        for i in places[j]:
+            pl = place(name=places[j][i]['name'],desc=places[j][i]['desc'],image=places[j][i]['img'],city_id=ct)
+            pl.save()
 
 
 
