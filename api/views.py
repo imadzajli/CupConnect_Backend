@@ -12,6 +12,8 @@ import json
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import cache_page
 from .utils import hotels
+from.utils.city import *
+
 
 t = {
     "main": "https://firebasestorage.googleapis.com/v0/b/devjamxcyberops.appspot.com/o/stadiums%2Ftangier%2Fmain.jpg?alt=media&token=2fc78682-0748-4494-adca-2ecf5e5e0601",
@@ -77,6 +79,15 @@ s6_path=["C:/Users/pp/Desktop/devjam/api/images/fes/main.jpg","C:/Users/pp/Deskt
 
 CACHE_TTL = 60 * 15
 
+
+def add_cities():
+    all_stad  = stadiums.objects.all().values()
+    for i in all_stad:
+        sym = {"tangier":"t","Rabat":"r","Casablanca":"c","Marrakech":"m","Fes":"f","Agadir":"a"}
+        c = i["city"]
+        res = Cities(name=c,desc=descr[sym[c]],population=pop[sym[c]],creation_date=date[sym[c]],transport=transport[sym[c]],stad_id=stadiums.objects.get(id=i["id"]))
+        res.save()
+        
 
 
 
@@ -149,7 +160,9 @@ def base64_to_image(b64):
 
 
 def home(request):
-    migrate()
+    #add_cities()
+    #migrate()
+
     return render(request, "home.html")
 
 
@@ -276,3 +289,19 @@ def update_user(request,attribute,id,new_value):
 
     return JsonResponse({"message":"done"})
         
+class city_view(APIView):
+    serializer_class = cityseria
+    def get(self,request):
+        res = [{"id":r.id,"name":r.name,"desc":r.desc,"population":r.population,"transport":r.transport,"date":r.creation_date,"stadium":{'id':r.stad_id.id,'name':r.stad_id.name},"image":r.image } for r in Cities.objects.all()]
+        return Response(res)
+
+@api_view(['GET'])
+
+def get_city_by_stad(request,stad_id):
+    if request.method == 'GET':
+        try:
+            stadium = stadiums.objects.get(id=stad_id) #parameter
+            city = Cities.objects.get(stad_id=stadium) #attribute
+            return Response(city,status=status.HTTP_200_OK)
+        except:
+            return Response("error",status=status.HTTP_400_BAD_REQUEST)

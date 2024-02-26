@@ -46,4 +46,25 @@ class hotelseria(serializers.ModelSerializer):
             "stad"
         )
 
-# lets creat a json to return data = ['name','capacity','city','country','desc','cost','picturesx7']
+class cityseria(serializers.ModelSerializer):
+    class Meta:
+        model = Cities
+        fields = (
+            "id",
+            "name",
+            "stad_id",
+            "desc",
+            "population",
+            "creation_date",
+            "transport"
+        )
+
+class placeseria(serializers.ModelSerializer):
+    class Meta:
+        model = place
+        fields = ("id","name","city_id","desc","location","distance_from_stadium","image")
+
+class disheseria(serializers.ModelSerializer):
+    class Meta:
+        model = place
+        fields = ("id","name","city_id","desc","image")
