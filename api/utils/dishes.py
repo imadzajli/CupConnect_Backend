@@ -17,7 +17,7 @@ dishes = {
             "img":"https://firebasestorage.googleapis.com/v0/b/devjamxcyberops.appspot.com/o/dishes%2Fchebakia.jpg?alt=media&token=1a615dcd-de66-4a86-8d1a-1f189ef59884"
         }
     },
-    "Casablance":{
+    "Casablanca":{
         "a":{
             "name":"M'kila",
             "desc":"While you can find this dish on upscale menus across Casablanca, the best place to eat it is as at the port itself, where the shrimp are fresh and plentiful. Fruity olive oil, tomatoes, cumin, ginger, and herbs create the base. As the mix bubbles over an open burner, small shrimp are tossed in to cook for a few minutes before an egg is quickly poached or scrambled in the brew. Served with a bottomless glass of sweet mint tea and plenty of fresh, crusty Moroccan bread for dipping, this is the perfect breakfast or lunch by the seashore. A number of restaurants serve shrimp with eggs around the port, but the best place to have it isn’t a restaurant at all. Instead, head deep inside the port itself and grab one of the makeshift tables. If you see vendors hustling between tables and mostly Moroccans filling the benches, you’ll know you’re in the right spot.",
@@ -53,6 +53,21 @@ dishes = {
             "img":"https://firebasestorage.googleapis.com/v0/b/devjamxcyberops.appspot.com/o/dishes%2Ftagine.jpg?alt=media&token=53e42d84-13c9-40b7-bdf9-8bcf8af7fc94"
         }
     },
-
-
+    "Rabat": {
+        "a": {
+            "name": "M'assal",
+            "desc": "is a sweet and salty meat tajine, combining a ras el hanout blend of spices with honey, cinnamon and almonds. This tajine is one of the traditional dishes of the Eid al-Adha Muslim festival (Festival of Sacrifice). It is often made of lamb from animals ritually sacrificed during the festival.",
+            "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/IB_tajine_02.jpg/960px-IB_tajine_02.jpg"
+        },
+        "b": {
+            "name": "Atay",
+            "desc": "also known as Moroccan mint tea. Is a preparation of gunpowder green tea with spearmint leaves and sugar. Traditionally, the tea is served three times. The amount of time it has been steeping gives each of the glasses of tea a unique flavor, described in this famous Maghrebi proverb: << The first glass is as gentle as life, the second is as strong as love, the third is as bitter as death >>",
+            "img": "https://upload.wikimedia.org/wikipedia/commons/3/35/ThiMil_The5.jpg"
+        },
+        "c": {
+            "name": "Zaalouk",
+            "desc": "is a Moroccan salad of cooked eggplants and tomatoes. After being grilled, the eggplant is combined with the tomatoes and seasoned with spices and garlic.",
+            "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Zaalouk-01.JPG/964px-Zaalouk-01.JPG"
+        }
+    }
 }
