@@ -14,6 +14,7 @@ from django.views.decorators.cache import cache_page
 from .utils import hotels
 from.utils.city import *
 from .utils.place import *
+from .utils.dishes import *
 from rest_framework import permissions
 
 
@@ -97,10 +98,10 @@ def add_places():
             pl = place(name=places[j][i]['name'],desc=places[j][i]['desc'],location=places[j][i]['location'],image=places[j][i]['img'],city_id=ct)
             pl.save()
 def add_dishes():
-    for j in dishe:
+    for j in dishes:
         ct = Cities.objects.get(name=j)
-        for i in places[j]:
-            pl = place(name=places[j][i]['name'],desc=places[j][i]['desc'],image=places[j][i]['img'],city_id=ct)
+        for i in dishes[j]:
+            pl = dishe(name=places[j][i]['name'],desc=places[j][i]['desc'],image=places[j][i]['img'],city_id=ct)
             pl.save()
 
 
