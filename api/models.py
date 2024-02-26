@@ -84,7 +84,7 @@ class Hotel(models.Model):
 class user(AbstractUser):
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=20)
-    email = models.EmailField(primary_key=True)
+    email = models.EmailField(unique=True)
     password = models.CharField(max_length=30)
     gender = models.CharField(max_length=1)
     phone = models.CharField(max_length=20)
