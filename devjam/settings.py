@@ -84,7 +84,7 @@ WSGI_APPLICATION = "devjam.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.mysql",
+        "ENGINE": "django_prometheus.db.backends.mysql",
         "NAME": "defaultdb",
         "USER": "avnadmin",
         "PASSWORD": "AVNS_gOxw7eXPHzoU61KFEh5",
