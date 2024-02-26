@@ -89,8 +89,28 @@ class user(AbstractUser):
     gender = models.CharField(max_length=1)
     phone = models.CharField(max_length=20)
     country = models.CharField(max_length=30)
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = [
-        'first_name', 'last_name',
-        'password', 'gender', 'phone', 'country'
-    ]
+
+
+class Cities(models.Model):
+    name = models.CharField(max_length=20)
+    stad_id = models.ForeignKey(stadiums,on_delete=models.Case)
+    desc = models.TextField()
+    population = models.BigIntegerField()
+    creation_date = models.IntegerField()
+    transport = models.TextField()
+    image = models.CharField(max_length=350)
+
+class place(models.Model):
+    name = models.CharField(max_length=20)
+    city_id = models.ForeignKey(Cities,on_delete=models.CASCADE)
+    desc = models.TextField()
+    location = models.CharField(max_length=100)
+    distance_from_stadium = models.FloatField()
+    image = models.CharField(max_length=300)
+
+
+class dishe(models.Model):
+    name= models.CharField(max_length=30)
+    city_id = models.ForeignKey(Cities,on_delete=models.CASCADE)
+    desc = models.TextField()
+    image = models.CharField(max_length=300)
