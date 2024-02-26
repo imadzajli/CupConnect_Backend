@@ -1,5 +1,5 @@
 
-place = {
+places = {
     "Marrakech":{
         "a":{
             "name":"Jardin Majorelle",

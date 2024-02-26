@@ -103,7 +103,7 @@ class Cities(models.Model):
     image = models.CharField(max_length=350)
 
 class place(models.Model):
-    name = models.CharField(max_length=20)
+    name = models.CharField(max_length=50)
     city_id = models.ForeignKey(Cities,on_delete=models.CASCADE)
     desc = models.TextField()
     location = models.CharField(max_length=100)

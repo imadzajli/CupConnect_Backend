@@ -13,6 +13,7 @@ from django.utils.decorators import method_decorator
 from django.views.decorators.cache import cache_page
 from .utils import hotels
 from.utils.city import *
+from .utils.place import *
 from rest_framework import permissions
 
 
@@ -88,7 +89,13 @@ def add_cities():
         c = i["city"]
         res = Cities(name=c,desc=descr[sym[c]],population=pop[sym[c]],creation_date=date[sym[c]],transport=transport[sym[c]],stad_id=stadiums.objects.get(id=i["id"]))
         res.save()
-        
+
+def add_places():
+    for j in places:
+        ct = Cities.objects.get(name=j)
+        for i in places[j]:
+            pl = place(name=places[j][i]['name'],desc=places[j][i]['desc'],location=places[j][i]['location'],image=places[j][i]['img'],city_id=ct)
+            pl.save()
 
 
 
@@ -163,6 +170,7 @@ def base64_to_image(b64):
 def home(request):
     #add_cities()
     #migrate()
+    add_places()
 
     return render(request, "home.html")
 
