@@ -77,7 +77,14 @@ dishes = {
             "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Tangia_in_Marrakech_03.jpg/640px-Tangia_in_Marrakech_03.jpg"
         },
         "b": {
-            
+            "name": "Harira",
+            "desc": "is a traditional Moroccan soup It is popular as a starter but is also eaten on its own as a light snack. There are many variations and it is mostly served during Ramadan, although it can be made throughout the year."
+            "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/%D8%AD%D8%B1%D9%8A%D8%B1%D8%A9.jpg/720px-%D8%AD%D8%B1%D9%8A%D8%B1%D8%A9.jpg"
+        },
+        "c": {
+            "name": "Briouat",
+            "desc": "is a sweet or savory puff pastry. Briouats are filled with meat (mostly chicken or lamb) or fish and shrimp, mixed with cheese, lemon and pepper. They are wrapped in warqa (a paper-thin dough) in a triangular or cylindrical shape. Briouats can also be sweet, filled with almond or peanut paste and fried, then dipped in warm honey flavored with orange blossom water.",
+            "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Moroccan_food-02.jpg/640px-Moroccan_food-02.jpg"
         }
     }
 }
