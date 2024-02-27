@@ -86,7 +86,7 @@ class user(ExportModelOperationsMixin("user"), AbstractUser):
     last_name = models.CharField(max_length=20)
     email = models.EmailField(unique=True)
     password = models.CharField(max_length=500)
-    gender = models.CharField(max_length=1)
+    gender = models.CharField(max_length=20)
     phone = models.CharField(max_length=20)
     country = models.CharField(max_length=30)
     USERNAME_FIELD = "email"
