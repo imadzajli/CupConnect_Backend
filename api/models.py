@@ -81,6 +81,7 @@ class Hotel(ExportModelOperationsMixin("Hotel"), models.Model):
 
 
 class user(ExportModelOperationsMixin("user"), AbstractUser):
+    username = None
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=20)
     email = models.EmailField(unique=True)
