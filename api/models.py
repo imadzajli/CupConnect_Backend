@@ -82,13 +82,13 @@ class Hotel(ExportModelOperationsMixin("Hotel"), models.Model):
 
 class user(ExportModelOperationsMixin("user"), AbstractUser):
     username = None
-    first_name = models.CharField(max_length=20)
-    last_name = models.CharField(max_length=20)
+    first_name = models.CharField(max_length=200)
+    last_name = models.CharField(max_length=200)
     email = models.EmailField(unique=True)
     password = models.CharField(max_length=500)
-    gender = models.CharField(max_length=20)
-    phone = models.CharField(max_length=20)
-    country = models.CharField(max_length=30)
+    gender = models.CharField(max_length=50)
+    phone = models.CharField(max_length=50)
+    country = models.CharField(max_length=50)
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = [
         "password",
