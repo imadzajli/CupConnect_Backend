@@ -19,4 +19,6 @@ RUN poetry install --without dev --no-root && rm -rf $POETRY_CACHE_DIR
 
 COPY . .
 
-ENTRYPOINT ["poetry", "run", "python", "manage.py", "runserver", "0.0.0.0:10000"]
+EXPOSE 8000
+
+ENTRYPOINT ["poetry", "run", "python", "manage.py", "runserver"]
